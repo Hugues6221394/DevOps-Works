@@ -15,8 +15,8 @@ import "../node_modules/@syncfusion/ej2-schedule/styles/material.css";
 
 function App() {
   const dataManager = new DataManager({
-    url: 'http://localhost:8080/api/scheduleevents/getData',
-    crudUrl: 'http://localhost:8080/api/scheduleevents/crudActions',
+    url: '/api/scheduleevents/getData',
+    crudUrl: '/api/scheduleevents/crudActions',
     adaptor: new UrlAdaptor(),
     crossDomain: true
 });
