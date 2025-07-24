@@ -8,7 +8,7 @@ on:
     paths:
       - 'frontend/**'
       - 'backend/**'
-      - '.github/workflows/ghcr-build.yml'
+      - '.github/workflows/ghcr-buildd.yml'
   workflow_dispatch:
 
 jobs:
