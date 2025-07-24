@@ -1,15 +1,12 @@
-# Use OpenJDK 17 image
-FROM openjdk:17-jdk-slim
-
-# Set working directory
+# ---- Build stage ----
+FROM maven:3.9.6-eclipse-temurin-17-alpine AS builder
 WORKDIR /app
+COPY . .
+RUN mvn -pl backend clean package -DskipTests
 
-# Copy the JAR file into the container
-COPY target/*.jar app.jar
-
-# Expose the port your app runs on (change if different)
+# ---- Run stage ----
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY --from=builder /app/backend/target/*.jar app.jar
 EXPOSE 8080
-
-# Command to run the JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
