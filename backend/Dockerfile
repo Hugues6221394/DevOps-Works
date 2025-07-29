@@ -1,8 +1,8 @@
 # ---- Build stage ----
 FROM maven:3.9.6-eclipse-temurin-17-alpine AS builder
 WORKDIR /app
-COPY . .  # ✅ Includes root pom.xml and modules
-RUN mvn -B clean package -DskipTests
+COPY . .
+RUN mvn -pl backend clean package -DskipTests
 
 # ---- Run stage ----
 FROM eclipse-temurin:17-jdk-alpine
